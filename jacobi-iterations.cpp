@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
 		Norm = fabs(x - *(xPrevAns + rank));
 
 		MPI_Allgather(&x, 1, MPI_DOUBLE, xPrevAns, 1, MPI_DOUBLE, MPI_COMM_WORLD);
-		MPI_Reduce(&Norm,&MaxNorm, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+		MPI_Reduce(&Norm, &MaxNorm, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
 		MPI_Bcast(&MaxNorm, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	}while(MaxNorm > eps);
